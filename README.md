@@ -92,7 +92,7 @@ custom:
 ```
 
 All modules stated in `externals` will be excluded from bundled files. If an excluded module
-is stated as `dependencies` in `package.json`, it will be packed into the Serverless
+is required and stated as `dependencies` in `package.json`, it will be packed into the Serverless
 artifact under the `node_modules` directory.
 
 By default, the plugin will use the `package.json` file in working directory, If you want to
@@ -105,6 +105,17 @@ custom:
     packagePath: '../package.json' # relative path to custom package.json file.
 ```
 > Note that only relative path is supported at the moment.
+
+You can include any un-required package by listing it under `external`. eg:
+
+```
+# serverless.yml
+custom:
+  webpackIncludeModules:
+    external:
+      - pg
+      - sequelize
+```
 
 You can find an example setups in the [`examples`](./examples) folder.
 
